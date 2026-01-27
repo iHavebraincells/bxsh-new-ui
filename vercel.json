@@ -1,0 +1,12 @@
+{
+  "routes": [
+    {
+      "src": "/service/(.*)",
+      "dest": "/static/public/index.html"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/static/public/index.html"
+    }
+  ]
+}
