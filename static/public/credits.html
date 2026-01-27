@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Credits</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Match site theme -->
+  <meta name="theme-color" content="#00ffa6">
+  <link rel="icon" href="/images/logo.gif">
+  <link href="/styles.css" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: black;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+
+    .credits-box {
+      background: #2c2c2c;
+      padding: 30px 40px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 0 25px rgba(0, 255, 166, 0.7);
+      max-width: 420px;
+      width: 90%;
+    }
+
+    .credits-box h1 {
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+
+    .credits-box p {
+      margin: 6px 0;
+      opacity: 0.9;
+    }
+
+    .credits-box hr {
+      border: none;
+      height: 1px;
+      background: rgba(255,255,255,0.15);
+      margin: 15px 0;
+    }
+
+    .linkmaker {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 6px 14px;
+      font-size: 12px;
+      color: white;
+      background: black;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .linkmaker:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 0 6px rgba(0, 255, 166, 0.6);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="credits-box">
+    <h1>Credits</h1>
+    <p>bxsh — site owner & dev</p>
+    <p>froggie1 / uv — proxy tech</p>
+    <p>Vincent Garreau  — background effects</p>
+    <p>Firebase — auth & backend</p>
+
+    <hr>
+
+    <p style="font-size:12px; opacity:0.7;">
+      Made for fun • Not affiliated with Study.com
+    </p>
+
+    <a href="/" class="linkmaker">← Back Home</a>
+  </div>
+
+</body>
+</html>

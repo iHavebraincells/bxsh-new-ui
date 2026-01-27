@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>US4 | Game</title>
+</head>
+<body style="margin:0; padding:0; overflow:hidden;">
+
+  <iframe id="gameFrame" style="width:100vw; height:100vh; border:none;"></iframe>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    let url = params.get("url");
+
+    if (!url) {
+      document.body.innerHTML = "<h1>No game URL found.</h1>";
+    } else {
+      // If the URL is a direct site (not embed style), optionally wrap with UV
+      if (!url.startsWith("https://")) {
+        document.body.innerHTML = "<h1>Invalid URL.</h1>";
+      } else {
+        document.getElementById("gameFrame").src = url;
+      }
+    }
+  </script>
+
+</body>
+</html>

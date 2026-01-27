@@ -1,0 +1,135 @@
+/* ===== Global ===== */
+body {
+  margin: 0;
+  padding: 0;
+  background: black;
+  color: white;
+  font-family: Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+/* ===== Top Navbar ===== */
+.topbar {
+  width: 50%;
+  height: 48px;               
+  background: #0b0b0b;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 18px;            
+  margin: 0 auto;
+  box-shadow: 0 0 20px rgba(57, 255, 126, 0.6);
+  border: 1px solid rgba(57, 255, 126, 0.25);
+  border-radius: 12px;
+  z-index: 10;
+}
+
+.logo {
+  height: 40px;               
+}
+
+.navlinks {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.navlinks a {
+  color: white;
+  text-decoration: none;
+  font-size: 13px;             
+  opacity: 0.8;
+  padding: 6px 6px;
+}
+
+.navlinks a:hover {
+  opacity: 1;
+}
+
+/* ===== Main Box ===== */
+#roddyrichheshomebox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 60px);
+  position: relative;
+  margin-top: 60px; /* dont change this or nav bar will overlap - bash */
+}
+
+#main {
+  text-align: center;
+  z-index: 2;
+}
+
+/* ===== Title ===== */
+#title {
+  font-size: 64px;
+  margin: 0;
+  color: #39FF7E; 
+  text-shadow: 0 0 10px rgba(57, 255, 126, 0.5);
+}
+
+/* ===== Subtext ===== */
+h3 {
+  margin: 10px 0;
+  font-weight: normal;
+  color: #c7c7c7;
+}
+
+#splash-msg {
+  color: #686868;
+  font-size: 16px;
+  margin-top: 12px;
+}
+
+/* ===== Search Box ===== */
+#uv-address {
+  width: 320px;
+  padding: 12px 15px;
+  border-radius: 10px;
+  border: 1px solid #333;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  outline: none;
+}
+
+#uv-address::placeholder {
+  color: #8a8a8a;
+}
+
+/* ===== Ads ===== */
+#adleft, #adright {
+  position: fixed;
+  top: 120px;
+  z-index: 1;
+}
+
+#adleft {
+  left: 0;
+}
+
+#adright {
+  right: 0;
+}
+
+/* ===== Particles Background ===== */
+#particles-js {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  pointer-events: none; 
+}
+
+/* ===== Responsive ===== */
+@media screen and (max-width: 700px) {
+  #uv-address {
+    width: 240px;
+  }
+
+  #title {
+    font-size: 48px;
+  }
+}
