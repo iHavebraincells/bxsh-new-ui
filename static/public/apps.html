@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Games</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="theme-color" content="#00ffa6">
+  <link rel="icon" href="/images/logo.gif">
+  <link href="/styles.css" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: black;
+      color: white;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .app-container {
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      max-width: 1200px;
+      padding: 40px;
+    }
+
+    .app-box {
+      background: #2c2c2c;
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 0 25px rgba(0, 255, 166, 0.7);
+      width: 200px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .app-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 35px rgba(0, 255, 166, 1);
+    }
+
+    .app-button {
+      position: relative;
+      cursor: pointer;
+    }
+
+    .app-button img {
+      width: 100%;
+      border-radius: 10px;
+      display: block;
+    }
+
+.overlay-text {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-shadow: 0 0 8px rgba(0,0,0,0.8);
+  color: white; /* 👈 THIS */
+}
+
+    .linkmaker {
+      margin-top: 20px;
+      padding: 8px 18px;
+      font-size: 14px;
+      color: white;
+      background: black;
+      border-radius: 10px;
+      text-decoration: none;
+      box-shadow: 0 0 10px rgba(0, 255, 166, 0.6);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .linkmaker:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 18px rgba(0, 255, 166, 1);
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="app-container">
+
+    <!-- code edit -->
+    <div class="app-box">
+      <a href="/code.html">
+        <div class="app-button">
+          <img src="images/code.jpg" alt="app 1">
+          <div class="overlay-text">Code Editer</div>
+        </div>
+      </a>
+    </div>
+
+  <a href="/" class="linkmaker">← Back Home</a>
+
+</body>
+</html>
