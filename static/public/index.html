@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, minimal-ui, shrink-to-fit=yes">
-  <title>Study.com</title>
+  <title>peakness</title>
   <link href="/styles.css" rel="stylesheet" type="text/css" />
   <link rel="manifest" href="manifest.json"/>
   <link rel="icon" href="/images/thosewhodrinkeggnog.png">
@@ -58,32 +58,6 @@
         <input id="uv-search-engine" value="https://www.google.com/search?hl=en-us&q=%s" type="hidden"/>
         <input id="uv-address" type="text" placeholder="welcome back" class="form__input"/>
       </form>
-
-      <div id="adleft">
-        <script type="text/javascript">
-          atOptions = {
-            'key' : 'b8714f6d7a165d2451509a09e2da6c45',
-            'format' : 'iframe',
-            'height' : 600,
-            'width' : 160,
-            'params' : {}
-          };
-        </script>
-        <script type="text/javascript" src="//www.highperformanceformat.com/b8714f6d7a165d2451509a09e2da6c45/invoke.js"></script>
-      </div>
-
-      <div id="adright">
-        <script type="text/javascript">
-          atOptions = {
-            'key' : 'b8714f6d7a165d2451509a09e2da6c45',
-            'format' : 'iframe',
-            'height' : 600,
-            'width' : 160,
-            'params' : {}
-          };
-        </script>
-        <script type="text/javascript" src="//www.highperformanceformat.com/b8714f6d7a165d2451509a09e2da6c45/invoke.js"></script>
-      </div>
 
       <div id="particles-js"></div>
 
@@ -159,69 +133,6 @@
           return true;
         }
         checkBrowserSupport();
-      </script>
-
-      <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
-      <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
-      <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
-
-      <script>
-        var firebaseConfig = {
-          apiKey: "AIzaSyAydynhitaENUPOr8S-glDFflJMZCZbZYY",
-          authDomain: "nfgrhtaer4wt4yh4r.firebaseapp.com",
-          projectId: "nfgrhtaer4wt4yh4yh4r",
-          storageBucket: "nfgrhtaer4wt4yh4r.appspot.com",
-          messagingSenderId: "741433768105",
-          appId: "1:741433768105:web:fad81fc01ccb2fddc951b8"
-        };
-
-        firebase.initializeApp(firebaseConfig);
-
-        const auth = firebase.auth();
-        const database = firebase.database();
-        var provider = new firebase.auth.GoogleAuthProvider();
-
-        function googleSignIn() {
-          auth.signInWithPopup(provider)
-            .then((result) => {
-              const user = result.user;
-              console.log('User:', user);
-              displayUserProfile(user);
-            }).catch((error) => {
-              console.error('Error during sign-in:', error);
-            });
-        }
-
-        function displayUserProfile(user) {
-          if (user) {
-            const profilePicUrl = user.photoURL;
-            const rizzmyohio = "welcome back," + user.displayName + "."
-            document.getElementById('profile-pic').src = profilePicUrl;
-            document.getElementById('user-name').textContent = user.displayName;
-            document.getElementById('uv-address').placeholder = rizzmyohio;
-          }
-        }
-
-        function signOut() {
-          auth.signOut().then(() => {
-            document.getElementById('big-profile-pic').src = '';
-            document.getElementById('profile-pic').src = '';
-            document.getElementById('user-name').textContent = '';
-          }).catch((error) => {
-            console.error('Error during sign-out:', error);
-          });
-        }
-
-        auth.onAuthStateChanged((user) => {
-          if (user) {
-            document.getElementById('uv-address').placeholder = "welcome back,    " + user.displayName + ".";
-            displayUserProfile(user);
-          } else {
-            document.getElementById('profile-pic').src = '/images/user.png';
-            document.getElementById('big-profile-pic').src = '/images/user.png';
-            document.getElementById('user-name').textContent = '';
-          }
-        });
       </script>
 
     </div>
