@@ -130,21 +130,20 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 2000);
   }
 
-  /* -------------------------
-     PARTICLES INIT
-  -------------------------- */
-  if (window.particlesJS) {
-    particlesJS("particles-js", {
-      particles: {
-        number: { value: 60 },
-        color: { value: "#00ffa6" },
-        shape: { type: "circle" },
-        opacity: { value: 0.5 },
-        size: { value: 3 },
-        move: { enable: true, speed: 2 }
+document.addEventListener("DOMContentLoaded", () => {
+      if (window.particlesJS) {
+        particlesJS("particles-js", {
+          particles: {
+            number: { value: 60 },
+            color: { value: "#00ffa6" },
+            shape: { type: "circle" },
+            opacity: { value: 0.5 },
+            size: { value: 3 },
+            move: { enable: true, speed: 2 }
+          }
+        });
       }
     });
-  }
 
   /* -------------------------
      GAME JOIN HANDLER
