@@ -9,6 +9,9 @@
   <link rel="icon" href="/images/logo.gif">
   <link href="/styles.css" rel="stylesheet">
 
+  <!-- particles -->
+  <script src="/particles.js" defer></script>
+
   <style>
     body {
       margin: 0;
@@ -17,6 +20,16 @@
       color: white;
       font-family: Arial, sans-serif;
       overflow: hidden;
+    }
+
+    /* PARTICLES LAYER */
+    #particles-js {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
     }
 
     /* CENTER AREA */
@@ -92,7 +105,10 @@
 
 <body>
 
-  <!-- NAVBAR (same as index.html) -->
+  <!-- PARTICLES -->
+  <div id="particles-js"></div>
+
+  <!-- NAVBAR -->
   <header class="topbar">
 
     <img src="/images/logo.gif" class="logo" alt="logo">
@@ -123,11 +139,28 @@
         Made for fun • school project / beta build
       </p>
 
-      <a href="/" class="back-btn">← Back Home</a>
 
     </div>
 
   </div>
+
+  <!-- PARTICLES INIT -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      if (window.particlesJS) {
+        particlesJS("particles-js", {
+          particles: {
+            number: { value: 60 },
+            color: { value: "#00ffa6" },
+            shape: { type: "circle" },
+            opacity: { value: 0.5 },
+            size: { value: 3 },
+            move: { enable: true, speed: 2 }
+          }
+        });
+      }
+    });
+  </script>
 
 </body>
 </html>
