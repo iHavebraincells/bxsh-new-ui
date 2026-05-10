@@ -2,150 +2,137 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, minimal-ui, shrink-to-fit=yes">
-  <title>peakness</title>
-  <link href="/styles.css" rel="stylesheet" type="text/css" />
-  <link rel="manifest" href="manifest.json"/>
-  <link rel="icon" href="/images/thosewhodrinkeggnog.png">
-  <meta property="og:title" content="bxsh">
-  <meta name="theme-color" content="#00ffa6">
-  <meta name="msapplication-TileColor" content="#00ffa6">
-  <meta property="og:image" content="/images/thosewhodrinkeggnog.png">
-  <meta name="description" content="bxsh unreleased beta">
-  <script src="/sys/index.js"></script>
-  <meta property="og:description" content="bxsh unreleased beta">
 
-  <!-- title -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, minimal-ui, shrink-to-fit=yes">
+
+  <title>PLSD - Classlink</title>
+
+  <link href="/styles.css" rel="stylesheet">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="/images/thosewhodrinkeggnog.png">
+
+  <meta name="theme-color" content="#00ffa6">
+  <meta property="og:title" content="bxsh">
+  <meta property="og:image" content="/images/thosewhodrinkeggnog.png">
+  <meta property="og:description" content="bxsh unreleased beta">
+  <meta name="description" content="bxsh unreleased beta">
+  <meta name="msapplication-TileColor" content="#00ffa6">
+
+  <script src="/sys/index.js" defer></script>
+
   <style>
     #title {
       color: #39FF7E;
       text-shadow: 0 0 10px rgba(57, 255, 126, 0.5);
     }
-    
+
+    /* PARTICLES FIX */
     #particles-js {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-}
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
   </style>
 </head>
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-43Q4DLBWP2"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-43Q4DLBWP2');
-</script>
-
 <body>
 
-  <div id="particles-js"></div>
-  
-  <!-- NAVBAR -->
-  <header class="topbar">
-    <img src="/images/thosewhodrinkeggnog.png" class="logo" alt="logo">
-    <nav class="navlinks">
-      <a href="/">home</a>
-      <a href="credits.html">cred</a>
-      <a href="/games.html">play</a>
-      <a href="/apps.html">apps</a>
-    </nav>
-  </header>
+<!-- PARTICLES LAYER -->
+<div id="particles-js"></div>
 
-  <div id="roddyrichheshomebox">
-    <div id="main">
-      <noscript>enable javascript you dumb monkey</noscript>
-      <h1 id="title">bxsh</h1>
-      <h3>in testing</h3>
+<!-- NAVBAR -->
+<header class="topbar">
+  <img src="/images/thosewhodrinkeggnog.png" class="logo" alt="logo">
 
-      <!-- splash message  -->
-      <div id="splash-msg"></div>
+  <nav class="navlinks">
+    <a href="/">home</a>
+    <a href="credits.html">credits</a>
+    <a href="/games.html">play</a>
+    <a href="/apps.html">apps</a>
+  </nav>
+</header>
 
-      <form id="uv-form">
-        <input id="uv-search-engine" value="https://www.google.com/search?hl=en-us&q=%s" type="hidden"/>
-        <input id="uv-address" type="text" placeholder="welcome back" class="form__input"/>
-      </form>
+<!-- MAIN -->
+<div id="roddyrichheshomebox">
+  <div id="main">
 
-      <script src="/particles.js"></script>
-      <script src="/app.js"></script>
-      <script src="/settings.js"></script>
-      <script src="/panic.js"></script>
-      <script src="/frog/bundle.js" defer></script>
-      <script src="/frog/config.js?cdn" defer></script>
+    <noscript>enable javascript</noscript>
 
-      <script>
-        const form = document.querySelector("#uv-form");
-        const input = document.querySelector("#uv-address");
+    <h1 id="title">bxsh</h1>
+    <h3>in testing</h3>
 
-        document.addEventListener("DOMContentLoaded", function () {
-          form.addEventListener("submit", async (event) => {
-            event.preventDefault();
-            window.navigator.serviceWorker
-              .register("/frog/sw.js", {
-                scope: __uv$config.prefix,
-              })
-              .then(() => {
-                let url = input.value.trim();
-                if (!isUrl(url)) url = "https://www.google.com/search?hl=en-us&q=" + url;
-                else if (!(url.startsWith("https://") || url.startsWith("http://")))
-                  url = "http://" + url;
+    <div id="splash-msg"></div>
 
-                if (url === "http://now.gg" || url === "http://now.gg/" || url === "https://now.gg" || url === "https://now.gg/") {
-                  alert('you are going to a broken site! redirecting you to https://nowgg.lol/hub')
-                  url = "https://nowgg.lol/hub"
-                }
+    <!-- UV FORM -->
+    <form id="uv-form">
+      <input id="uv-search-engine"
+        value="https://www.google.com/search?hl=en-us&q=%s"
+        type="hidden">
 
-                sessionStorage.setItem("encodedUrl", __uv$config.encodeUrl(url));
-                location.href = "calculus";
-              });
-          });
-        });
+      <input id="uv-address"
+        type="text"
+        placeholder="welcome back"
+        class="form__input">
+    </form>
 
-        function isUrl(val = "") {
-          if (/^http(s?):\/\//.test(val) || (val.includes(".") && val.slice(0, 1) !== " "))
-            return true;
-          return false;
-        }
+  </div>
+</div>
 
-        //  splash messages 
-        setInterval(function() {
-          document.getElementById("splash-msg").textContent =
-            randomtextstuff[Math.floor(Math.random() * randomtextstuff.length)];
-        }, 2000);
+<!-- SCRIPTS -->
+<script src="/particles.js" defer></script>
+<script src="/app.js" defer></script>
+<script src="/settings.js" defer></script>
+<script src="/panic.js" defer></script>
+<script src="/frog/bundle.js" defer></script>
+<script src="/frog/config.js?cdn" defer></script>
 
-        function getQueryParam(param) {
-          const urlParams = new URLSearchParams(window.location.search);
-          return urlParams.get(param);
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-          const joinid = getQueryParam('game');
-          if (joinid) {
-            window.location.href = '/share.html?game=' + joinid;
-          }
-        });
-
-        async function checkBrowserSupport() {
-          const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-          var ismobilegameon = tabData.mobilescreen;
-
-          if (isSafari) {
-            if (!tabData.mobilescreen){
-              document.getElementById('mobilepopup').style = '';
-              return false;
-            }
-          }
-          return true;
-        }
-        checkBrowserSupport();
-
-        
+<script>
 document.addEventListener("DOMContentLoaded", () => {
+
+  /* -------------------------
+     UV FORM HANDLER
+  -------------------------- */
+  const form = document.querySelector("#uv-form");
+  const input = document.querySelector("#uv-address");
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    await navigator.serviceWorker.register("/frog/sw.js", {
+      scope: __uv$config.prefix,
+    });
+
+    let url = input.value.trim();
+
+    if (!url.includes("http")) {
+      if (url.includes(".")) url = "http://" + url;
+      else url = "https://www.google.com/search?hl=en-us&q=" + url;
+    }
+
+    if (url.includes("now.gg")) {
+      alert("redirecting...");
+      url = "https://nowgg.lol/hub";
+    }
+
+    sessionStorage.setItem("encodedUrl", __uv$config.encodeUrl(url));
+    location.href = "calculus";
+  });
+
+  /* -------------------------
+     SPLASH TEXT
+  -------------------------- */
+  if (typeof randomtextstuff !== "undefined") {
+    setInterval(() => {
+      document.getElementById("splash-msg").textContent =
+        randomtextstuff[Math.floor(Math.random() * randomtextstuff.length)];
+    }, 2000);
+  }
+
+  /* -------------------------
+     PARTICLES INIT
+  -------------------------- */
   if (window.particlesJS) {
     particlesJS("particles-js", {
       particles: {
@@ -158,11 +145,19 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
-});  
-      </script>
 
-    </div>
-  </div>
+  /* -------------------------
+     GAME JOIN HANDLER
+  -------------------------- */
+  const params = new URLSearchParams(window.location.search);
+  const joinid = params.get("game");
+
+  if (joinid) {
+    location.href = "/share.html?game=" + joinid;
+  }
+
+});
+</script>
 
 </body>
 </html>
