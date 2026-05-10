@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>apps</title>
+  <title>Apps</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <meta name="theme-color" content="#00ffa6">
@@ -12,14 +12,24 @@
   <style>
     body {
       margin: 0;
-      min-height: 100vh;
       background: black;
       color: white;
       font-family: Arial, sans-serif;
+      overflow: hidden;
+    }
+
+    /* PAGE AREA */
+    .apps-wrap {
+      position: absolute;
+      top: 70px;
+      left: 0;
+      width: 100%;
+      height: calc(100vh - 70px);
+      overflow-y: auto;
       display: flex;
-      flex-direction: column;
-      align-items: center;
       justify-content: center;
+      align-items: flex-start;
+      padding: 40px;
     }
 
     .app-container {
@@ -29,7 +39,6 @@
       align-items: flex-start;
       flex-wrap: wrap;
       max-width: 1200px;
-      padding: 40px;
     }
 
     .app-box {
@@ -40,6 +49,7 @@
       box-shadow: 0 0 25px rgba(0, 255, 166, 0.7);
       width: 200px;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
+      cursor: pointer;
     }
 
     .app-box:hover {
@@ -49,7 +59,6 @@
 
     .app-button {
       position: relative;
-      cursor: pointer;
     }
 
     .app-button img {
@@ -58,50 +67,87 @@
       display: block;
     }
 
-.overlay-text {
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
-  font-weight: bold;
-  text-transform: uppercase;
-  text-shadow: 0 0 8px rgba(0,0,0,0.8);
-  color: white; /* 👈 THIS */
-}
+    .overlay-text {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      font-weight: bold;
+      text-transform: uppercase;
+      text-shadow: 0 0 8px rgba(0,0,0,0.8);
+      color: white;
+      font-size: 14px;
+    }
 
+    /* BACK BUTTON */
     .linkmaker {
-      margin-top: 20px;
+      margin-top: 25px;
       padding: 8px 18px;
       font-size: 14px;
-      color: white;
-      background: black;
+      color: black;
+      background: #00ffa6;
       border-radius: 10px;
       text-decoration: none;
+      font-weight: bold;
       box-shadow: 0 0 10px rgba(0, 255, 166, 0.6);
       transition: transform 0.15s ease, box-shadow 0.15s ease;
+      display: inline-block;
     }
 
     .linkmaker:hover {
       transform: translateY(-2px);
       box-shadow: 0 0 18px rgba(0, 255, 166, 1);
     }
+
   </style>
 </head>
 
 <body>
 
-  <div class="app-container">
+  <!-- NAVBAR (match index.html exactly) -->
+  <header class="topbar">
 
-    <!-- code edit -->
-    <div class="app-box">
-      <a href="/code.html">
-        <div class="app-button">
-          <img src="images/code.jpg" alt="app 1">
-          <div class="overlay-text">Code Editer</div>
+    <img src="/images/logo.gif" class="logo" alt="logo">
+
+    <nav class="navlinks">
+      <a href="/">home</a>
+      <a href="credits.html">cred</a>
+      <a href="/games.html">play</a>
+      <a href="/apps.html">apps</a>
+    </nav>
+
+  </header>
+
+  <!-- APPS PAGE -->
+  <div class="apps-wrap">
+
+    <div>
+
+      <div class="app-container">
+
+        <!-- CODE EDITOR -->
+        <div class="app-box" onclick="openApp('/code.html')">
+          <div class="app-button">
+            <img src="images/code.jpg" alt="Code Editor">
+            <div class="overlay-text">Code Editor</div>
+          </div>
         </div>
-      </a>
+
+      </div>
+
+      <!-- BACK HOME -->
+      <div style="text-align:center; margin-top:30px;">
+        <a href="/" class="linkmaker">← Back Home</a>
+      </div>
+
     </div>
 
-  <a href="/" class="linkmaker">← Back Home</a>
+  </div>
+
+  <script>
+    function openApp(url) {
+      window.location.href = url;
+    }
+  </script>
 
 </body>
 </html>
