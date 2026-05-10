@@ -3,60 +3,64 @@
 <head>
   <meta charset="UTF-8">
   <title>Games</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#00ffa6">
+
   <link rel="icon" href="/images/logo.gif">
-  <link rel="stylesheet" href="/styles.css">
+  <link href="/styles.css" rel="stylesheet">
 
   <script src="/particles.js" defer></script>
 
   <style>
     body {
       margin: 0;
+      min-height: 100vh;
       background: black;
       color: white;
       font-family: Arial, sans-serif;
-      overflow: hidden;
+      overflow-x: hidden;
     }
 
     /* PARTICLES */
     #particles-js {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      inset: 0;
       z-index: -1;
     }
 
-    /* MENU */
-    #menuPage {
-      position: absolute;
-      top: 70px;
-      left: 0;
-      width: 100%;
-      height: calc(100vh - 70px);
-      overflow-y: auto;
+    /* SEARCH BAR */
+    #gameSearch {
+      width: 300px;
+      padding: 10px 14px;
+      margin: 110px auto 20px auto;
+      display: block;
+      border-radius: 10px;
+      border: none;
+      outline: none;
+      background: #2c2c2c;
+      color: white;
+      box-shadow: 0 0 15px rgba(0, 255, 166, 0.4);
     }
 
+    /* GRID */
     .games-container {
       display: flex;
-      gap: 30px;
-      justify-content: center;
       flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
       max-width: 1200px;
-      padding: 40px;
-      margin: 0 auto;
+      margin: auto;
+      padding: 20px;
     }
 
     .game-box {
       background: #2c2c2c;
-      padding: 20px;
+      width: 200px;
+      padding: 15px;
       border-radius: 12px;
       text-align: center;
-      box-shadow: 0 0 25px rgba(0, 255, 166, 0.7);
-      width: 200px;
+      box-shadow: 0 0 25px rgba(0, 255, 166, 0.6);
       transition: 0.2s ease;
       cursor: pointer;
     }
@@ -78,173 +82,100 @@
 
     .overlay-text {
       position: absolute;
-      bottom: 10px;
-      left: 10px;
+      bottom: 8px;
+      left: 8px;
       font-weight: bold;
+      font-size: 13px;
       text-transform: uppercase;
       text-shadow: 0 0 8px rgba(0,0,0,0.8);
       color: white;
-      font-size: 14px;
     }
 
-    /* GAME VIEW */
-    #gamePage {
-      display: none;
-      position: fixed;
-      top: 70px;
-      left: 0;
-      width: 100%;
-      height: calc(100vh - 70px);
-      background: black;
-      z-index: 999;
-    }
-
-    #gameFrame {
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-
-    /* BACK BAR */
-    .backbar {
-      position: fixed;
-      top: 70px;
-      left: 0;
-      width: 100%;
-      height: 40px;
-      background: #111;
-      display: flex;
-      align-items: center;
-      padding-left: 15px;
-      z-index: 1000;
-    }
-
-    .backbtn {
-      background: #00ffa6;
-      border: none;
-      padding: 6px 12px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-
-    .backbtn:hover {
-      box-shadow: 0 0 12px rgba(0,255,166,0.8);
-    }
+    /* NAVBAR (assumes styles.css handles layout) */
   </style>
 </head>
 
 <body>
 
-  <!-- PARTICLES (THIS WAS MISSING) -->
-  <div id="particles-js"></div>
+<!-- PARTICLES -->
+<div id="particles-js"></div>
 
-  <!-- NAVBAR -->
-  <header class="topbar">
-    <img src="/images/logo.gif" class="logo" alt="logo">
+<!-- NAVBAR -->
+<header class="topbar">
+  <img src="/images/logo.gif" class="logo" alt="logo">
 
-    <nav class="navlinks">
-      <a href="/">home</a>
-      <a href="credits.html">cred</a>
-      <a href="/games.html">play</a>
-      <a href="/apps.html">apps</a>
-    </nav>
-  </header>
+  <nav class="navlinks">
+    <a href="/">home</a>
+    <a href="/credits.html">cred</a>
+    <a href="/games.html">play</a>
+    <a href="/apps.html">apps</a>
+  </nav>
+</header>
 
-  <!-- MENU -->
-  <div id="menuPage">
+<!-- SEARCH -->
+<input id="gameSearch" type="text" placeholder="Search games...">
 
-    <div class="games-container">
+<!-- GAME GRID -->
+<div class="games-container" id="games"></div>
 
-      <div class="game-box" onclick="loadGame('/slope.html')">
-        <div class="game-button">
-          <img src="images/slope.jpg">
-          <div class="overlay-text">slope</div>
-        </div>
-      </div>
+<script>
+const games = [
+  { name: "Slope", img: "images/slope.jpg", link: "/slope.html" },
+  { name: "Minecraft", img: "images/minecraft.jpg", link: "/minecraft.html" },
+  { name: "Super Mario 64", img: "images/supermario.jpg", link: "/superMARIO64.html" },
+  { name: "1v1.lol", img: "images/1v1.jpg", link: "/1v1.html" },
+  { name: "Baldi Ultra", img: "images/bdcp.jpg", link: "/bdcp.html" },
+  { name: "FNF", img: "images/fnf.jpg", link: "/fnf.html" },
+  { name: "-b", img: "images/b.jpg", link: "/b.html" }
+];
 
-      <div class="game-box" onclick="loadGame('/superMARIO64.html')">
-        <div class="game-button">
-          <img src="images/supermario.jpg">
-          <div class="overlay-text">Super Mario 64</div>
-        </div>
-      </div>
+const container = document.getElementById("games");
+const search = document.getElementById("gameSearch");
 
-      <div class="game-box" onclick="loadGame('/minecraft.html')">
-        <div class="game-button">
-          <img src="images/minecraft.jpg">
-          <div class="overlay-text">Minecraft</div>
-        </div>
-      </div>
+function render(filter = "") {
+  container.innerHTML = "";
 
-      <div class="game-box" onclick="loadGame('/1v1.html')">
-        <div class="game-button">
-          <img src="images/1v1.jpg">
-          <div class="overlay-text">1v1.lol</div>
-        </div>
-      </div>
+  games
+    .filter(g => g.name.toLowerCase().includes(filter.toLowerCase()))
+    .forEach(g => {
+      const box = document.createElement("div");
+      box.className = "game-box";
 
-      <div class="game-box" onclick="loadGame('/bdcp.html')">
-        <div class="game-button">
-          <img src="images/bdcp.jpg">
-          <div class="overlay-text">Baldi ULTRA DECOMP</div>
-        </div>
-      </div>
+      box.innerHTML = `
+        <a href="${g.link}">
+          <div class="game-button">
+            <img src="${g.img}" alt="${g.name}">
+            <div class="overlay-text">${g.name}</div>
+          </div>
+        </a>
+      `;
 
-      <div class="game-box" onclick="loadGame('/fnf.html')">
-        <div class="game-button">
-          <img src="images/fnf.jpg">
-          <div class="overlay-text">FNF</div>
-        </div>
-      </div>
+      container.appendChild(box);
+    });
+}
 
-      <div class="game-box" onclick="loadGame('/b.html')">
-        <div class="game-button">
-          <img src="images/b.jpg">
-          <div class="overlay-text">-b</div>
-        </div>
-      </div>
+render("");
 
-    </div>
+search.addEventListener("input", e => {
+  render(e.target.value);
+});
 
-  </div>
-
-  <!-- GAME VIEW -->
-  <div id="gamePage">
-
-    <iframe id="gameFrame" allowfullscreen tabindex="0"></iframe>
-
-  </div>
-
-  <!-- SCRIPT -->
-  <script>
-    function loadGame(url) {
-      document.getElementById("menuPage").style.display = "none";
-      document.getElementById("gamePage").style.display = "block";
-      document.getElementById("gameFrame").src = url;
-    }
-
-    function closeGame() {
-      document.getElementById("menuPage").style.display = "block";
-      document.getElementById("gamePage").style.display = "none";
-      document.getElementById("gameFrame").src = "";
-    }
-
-    document.addEventListener("DOMContentLoaded", () => {
-      if (window.particlesJS) {
-        particlesJS("particles-js", {
-          particles: {
-            number: { value: 60 },
-            color: { value: "#00ffa6" },
-            shape: { type: "circle" },
-            opacity: { value: 0.5 },
-            size: { value: 3 },
-            move: { enable: true, speed: 2 }
-          }
-        });
+/* PARTICLES INIT (safe fallback) */
+window.addEventListener("DOMContentLoaded", () => {
+  if (window.particlesJS) {
+    particlesJS("particles-js", {
+      particles: {
+        number: { value: 60 },
+        color: { value: "#00ffa6" },
+        shape: { type: "circle" },
+        opacity: { value: 0.5 },
+        size: { value: 3 },
+        move: { speed: 2 }
       }
     });
-  </script>
+  }
+});
+</script>
 
 </body>
 </html>
