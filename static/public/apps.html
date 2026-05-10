@@ -2,13 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Apps</title>
+  <title>apps</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="theme-color" content="#00ffa6">
-<link rel="icon" href="/images/logo.gif">
-<link rel="stylesheet" href="/styles.css">
-<script src="/particles.js" defer></script>
+  <meta name="theme-color" content="#00ffa6">
+  <link rel="icon" href="/images/logo.gif">
+  <link href="/styles.css" rel="stylesheet">
+
+  <!-- particles -->
+  <script src="/particles.js" defer></script>
 
   <style>
     body {
@@ -19,25 +21,34 @@
       overflow: hidden;
     }
 
-    /* PAGE AREA */
+    /* PARTICLES LAYER */
+    #particles-js {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    /* PAGE WRAP */
     .apps-wrap {
       position: absolute;
       top: 70px;
       left: 0;
       width: 100%;
       height: calc(100vh - 70px);
-      overflow-y: auto;
       display: flex;
       justify-content: center;
       align-items: flex-start;
       padding: 40px;
+      overflow-y: auto;
     }
 
     .app-container {
       display: flex;
       gap: 30px;
       justify-content: center;
-      align-items: flex-start;
       flex-wrap: wrap;
       max-width: 1200px;
     }
@@ -79,9 +90,8 @@
       font-size: 14px;
     }
 
-    /* BACK BUTTON */
     .linkmaker {
-      margin-top: 25px;
+      margin-top: 20px;
       padding: 8px 18px;
       font-size: 14px;
       color: black;
@@ -90,21 +100,22 @@
       text-decoration: none;
       font-weight: bold;
       box-shadow: 0 0 10px rgba(0, 255, 166, 0.6);
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
-      display: inline-block;
+      transition: 0.15s ease;
     }
 
     .linkmaker:hover {
       transform: translateY(-2px);
       box-shadow: 0 0 18px rgba(0, 255, 166, 1);
     }
-
   </style>
 </head>
 
 <body>
 
-  <!-- NAVBAR (match index.html exactly) -->
+  <!-- PARTICLES -->
+  <div id="particles-js"></div>
+
+  <!-- NAVBAR -->
   <header class="topbar">
 
     <img src="/images/logo.gif" class="logo" alt="logo">
@@ -118,33 +129,44 @@
 
   </header>
 
-  <!-- APPS PAGE -->
+  <!-- CONTENT -->
   <div class="apps-wrap">
 
-    <div>
+    <div class="app-container">
 
-      <div class="app-container">
-
-        <!-- CODE EDITOR -->
-        <div class="app-box" onclick="openApp('/code.html')">
-          <div class="app-button">
-            <img src="images/code.jpg" alt="Code Editor">
-            <div class="overlay-text">Code Editor</div>
-          </div>
+      <!-- CODE EDITOR -->
+      <div class="app-box" onclick="openApp('/code.html')">
+        <div class="app-button">
+          <img src="images/code.jpg" alt="app">
+          <div class="overlay-text">Code Editor</div>
         </div>
-
-      </div>
-
-      <!-- BACK HOME -->
-      <div style="text-align:center; margin-top:30px;">
-        <a href="/" class="linkmaker">← Back Home</a>
       </div>
 
     </div>
 
+    <div style="text-align:center; margin-top:30px;">
+      <a href="/" class="linkmaker">← Back Home</a>
+    </div>
+
   </div>
 
+  <!-- INIT PARTICLES (IMPORTANT) -->
   <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      if (window.particlesJS) {
+        particlesJS("particles-js", {
+          particles: {
+            number: { value: 60 },
+            color: { value: "#00ffa6" },
+            shape: { type: "circle" },
+            opacity: { value: 0.5 },
+            size: { value: 3 },
+            move: { enable: true, speed: 2 }
+          }
+        });
+      }
+    });
+
     function openApp(url) {
       window.location.href = url;
     }
