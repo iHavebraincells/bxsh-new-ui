@@ -10,73 +10,18 @@
   <link href="/styles.css" rel="stylesheet">
 
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
     body {
       margin: 0;
-      background: #000;
+      min-height: 100vh;
+      background: black;
       color: white;
       font-family: Arial, sans-serif;
       overflow: hidden;
     }
 
-    /* TOP BAR */
-
-    .topbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 60px;
-      background: #111;
-      border-bottom: 1px solid #222;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 20px;
-      z-index: 9999;
-    }
-
-    .logo {
-      color: #00ffa6;
-      font-size: 22px;
-      font-weight: bold;
-    }
-
-    .top-buttons {
-      display: flex;
-      gap: 10px;
-    }
-
-    .nav-btn {
-      background: #00ffa6;
-      color: black;
-      border: none;
-      padding: 8px 16px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: bold;
-      transition: 0.15s ease;
-    }
-
-    .nav-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 0 12px rgba(0,255,166,0.8);
-    }
-
-    /* MENU PAGE */
-
-    #menuPage {
-      position: absolute;
-      top: 60px;
-      left: 0;
-      width: 100%;
-      height: calc(100vh - 60px);
-      overflow-y: auto;
-      padding: 40px;
-    }
+    /* =========================
+       MENU LAYOUT (your style)
+    ========================== */
 
     .games-container {
       display: flex;
@@ -84,33 +29,35 @@
       justify-content: center;
       align-items: flex-start;
       flex-wrap: wrap;
-      max-width: 1400px;
-      margin: auto;
+      max-width: 1200px;
+      padding: 40px;
+      margin: 0 auto;
+      margin-top: 90px;
     }
 
     .game-box {
-      background: #1d1d1d;
-      width: 220px;
-      border-radius: 14px;
-      overflow: hidden;
-      box-shadow: 0 0 20px rgba(0,255,166,0.5);
-      transition: 0.2s ease;
+      background: #2c2c2c;
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 0 25px rgba(0, 255, 166, 0.7);
+      width: 200px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      cursor: pointer;
     }
 
     .game-box:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 0 30px rgba(0,255,166,1);
+      transform: translateY(-5px);
+      box-shadow: 0 0 35px rgba(0, 255, 166, 1);
     }
 
     .game-button {
-      cursor: pointer;
       position: relative;
     }
 
     .game-button img {
       width: 100%;
-      height: 140px;
-      object-fit: cover;
+      border-radius: 10px;
       display: block;
     }
 
@@ -118,129 +65,143 @@
       position: absolute;
       bottom: 10px;
       left: 10px;
-      right: 10px;
-      color: white;
       font-weight: bold;
       text-transform: uppercase;
-      text-shadow: 0 0 10px black;
-      font-size: 14px;
+      text-shadow: 0 0 8px rgba(0,0,0,0.8);
+      color: white;
     }
 
-    /* GAME PAGE */
+    /* =========================
+       IFRAME GAME VIEW
+    ========================== */
 
     #gamePage {
       display: none;
       position: fixed;
-      top: 60px;
+      top: 70px;
       left: 0;
       width: 100%;
-      height: calc(100vh - 60px);
+      height: calc(100vh - 70px);
       background: black;
+      z-index: 999;
     }
 
     #gameFrame {
       width: 100%;
       height: 100%;
       border: none;
-      background: black;
     }
 
-    /* SCROLLBAR */
+    /* =========================
+       BACK BUTTON
+    ========================== */
 
-    ::-webkit-scrollbar {
-      width: 8px;
+    .backbar {
+      position: fixed;
+      top: 70px;
+      left: 0;
+      width: 100%;
+      height: 40px;
+      background: #111;
+      display: flex;
+      align-items: center;
+      padding-left: 15px;
+      z-index: 1000;
     }
 
-    ::-webkit-scrollbar-thumb {
+    .backbtn {
       background: #00ffa6;
-      border-radius: 10px;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
     }
+
+    .backbtn:hover {
+      box-shadow: 0 0 12px rgba(0,255,166,0.8);
+    }
+
   </style>
 </head>
 
 <body>
 
-  <!-- TOPBAR -->
+  <!-- =========================
+       NAVBAR (kept consistent)
+  ========================== -->
 
-  <div class="topbar">
+  <header class="topbar">
+    <img src="/images/logo.gif" class="logo" alt="logo">
 
-    <div class="logo">
-      bxsh.shop
-    </div>
+    <nav class="navlinks">
+      <a href="/">home</a>
+      <a href="credits.html">cred</a>
+      <a href="/games.html">play</a>
+      <a href="/apps.html">apps</a>
+    </nav>
+  </header>
 
-    <div class="top-buttons">
-      <button class="nav-btn" onclick="closeGame()">
-        Home
-      </button>
-    </div>
-
-  </div>
-
-  <!-- MENU -->
+  <!-- =========================
+       GAME MENU (your original layout)
+  ========================== -->
 
   <div id="menuPage">
 
     <div class="games-container">
 
-      <!-- SLOPE -->
-
-      <div class="game-box">
-        <div class="game-button" onclick="loadGame('/slope.html')">
-          <img src="images/slope.jpg" alt="Slope">
-          <div class="overlay-text">Slope</div>
+      <!-- slope -->
+      <div class="game-box" onclick="loadGame('/slope.html')">
+        <div class="game-button">
+          <img src="images/slope.jpg">
+          <div class="overlay-text">slope</div>
         </div>
       </div>
 
-      <!-- MARIO -->
-
-      <div class="game-box">
-        <div class="game-button" onclick="loadGame('/superMARIO64.html')">
-          <img src="images/supermario.jpg" alt="Mario">
+      <!-- mario -->
+      <div class="game-box" onclick="loadGame('/superMARIO64.html')">
+        <div class="game-button">
+          <img src="images/supermario.jpg">
           <div class="overlay-text">Super Mario 64</div>
         </div>
       </div>
 
-      <!-- MINECRAFT -->
-
-      <div class="game-box">
-        <div class="game-button" onclick="loadGame('/minecraft.html')">
-          <img src="images/minecraft.jpg" alt="Minecraft">
+      <!-- minecraft -->
+      <div class="game-box" onclick="loadGame('/minecraft.html')">
+        <div class="game-button">
+          <img src="images/minecraft.jpg">
           <div class="overlay-text">Minecraft</div>
         </div>
       </div>
 
-      <!-- 1V1 -->
-
-      <div class="game-box">
-        <div class="game-button" onclick="loadGame('/1v1.html')">
-          <img src="images/1v1.jpg" alt="1v1">
+      <!-- 1v1 -->
+      <div class="game-box" onclick="loadGame('/1v1.html')">
+        <div class="game-button">
+          <img src="images/1v1.jpg">
           <div class="overlay-text">1v1.lol</div>
         </div>
       </div>
 
-      <!-- BALDI -->
-
-      <div class="game-box">
-        <div class="game-button" onclick="loadGame('/bdcp.html')">
-          <img src="images/bdcp.jpg" alt="Baldi">
-          <div class="overlay-text">Baldi Basics Ultra Decompile</div>
+      <!-- baldi -->
+      <div class="game-box" onclick="loadGame('/bdcp.html')">
+        <div class="game-button">
+          <img src="images/bdcp.jpg">
+          <div class="overlay-text">Baldi ULTRA DECOMP</div>
         </div>
       </div>
 
-      <!-- FNF -->
-
-      <div class="game-box">
-        <div class="game-button" onclick="loadGame('/fnf.html')">
-          <img src="images/fnf.jpg" alt="FNF">
-          <div class="overlay-text">Friday Night Funkin</div>
+      <!-- fnf -->
+      <div class="game-box" onclick="loadGame('/fnf.html')">
+        <div class="game-button">
+          <img src="images/fnf.jpg">
+          <div class="overlay-text">FNF</div>
         </div>
       </div>
 
-      <!-- -B -->
-
-      <div class="game-box">
-        <div class="game-button" onclick="loadGame('/b.html')">
-          <img src="images/b.jpg" alt="-b">
+      <!-- -b -->
+      <div class="game-box" onclick="loadGame('/b.html')">
+        <div class="game-button">
+          <img src="images/b.jpg">
           <div class="overlay-text">-b</div>
         </div>
       </div>
@@ -249,36 +210,34 @@
 
   </div>
 
-  <!-- GAME FRAME -->
+  <!-- =========================
+       GAME VIEWER
+  ========================== -->
 
   <div id="gamePage">
 
-    <iframe
-      id="gameFrame"
-      allowfullscreen
-      tabindex="0">
-    </iframe>
+    <div class="backbar">
+      <button class="backbtn" onclick="closeGame()">← Back</button>
+    </div>
+
+    <iframe id="gameFrame" allowfullscreen tabindex="0"></iframe>
 
   </div>
 
-  <!-- SCRIPT -->
+  <!-- =========================
+       SCRIPT
+  ========================== -->
 
   <script>
-    function loadGame(gamePath) {
-
+    function loadGame(url) {
       document.getElementById("menuPage").style.display = "none";
-
       document.getElementById("gamePage").style.display = "block";
-
-      document.getElementById("gameFrame").src = gamePath;
+      document.getElementById("gameFrame").src = url;
     }
 
     function closeGame() {
-
       document.getElementById("menuPage").style.display = "block";
-
       document.getElementById("gamePage").style.display = "none";
-
       document.getElementById("gameFrame").src = "";
     }
   </script>
