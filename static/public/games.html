@@ -4,35 +4,50 @@
   <meta charset="UTF-8">
   <title>Games</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#00ffa6">
-<link rel="icon" href="/images/logo.gif">
-<link rel="stylesheet" href="/styles.css">
-<script src="/particles.js" defer></script>
+
+  <meta name="theme-color" content="#00ffa6">
+  <link rel="icon" href="/images/logo.gif">
+  <link rel="stylesheet" href="/styles.css">
+
+  <script src="/particles.js" defer></script>
 
   <style>
     body {
       margin: 0;
-      min-height: 100vh;
       background: black;
       color: white;
       font-family: Arial, sans-serif;
       overflow: hidden;
     }
 
-    /* =========================
-       MENU LAYOUT (your style)
-    ========================== */
+    /* PARTICLES */
+    #particles-js {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    /* MENU */
+    #menuPage {
+      position: absolute;
+      top: 70px;
+      left: 0;
+      width: 100%;
+      height: calc(100vh - 70px);
+      overflow-y: auto;
+    }
 
     .games-container {
       display: flex;
       gap: 30px;
       justify-content: center;
-      align-items: flex-start;
       flex-wrap: wrap;
       max-width: 1200px;
       padding: 40px;
       margin: 0 auto;
-      margin-top: 90px;
     }
 
     .game-box {
@@ -42,7 +57,7 @@
       text-align: center;
       box-shadow: 0 0 25px rgba(0, 255, 166, 0.7);
       width: 200px;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      transition: 0.2s ease;
       cursor: pointer;
     }
 
@@ -69,12 +84,10 @@
       text-transform: uppercase;
       text-shadow: 0 0 8px rgba(0,0,0,0.8);
       color: white;
+      font-size: 14px;
     }
 
-    /* =========================
-       IFRAME GAME VIEW
-    ========================== */
-
+    /* GAME VIEW */
     #gamePage {
       display: none;
       position: fixed;
@@ -92,10 +105,7 @@
       border: none;
     }
 
-    /* =========================
-       BACK BUTTON
-    ========================== */
-
+    /* BACK BAR */
     .backbar {
       position: fixed;
       top: 70px;
@@ -121,16 +131,15 @@
     .backbtn:hover {
       box-shadow: 0 0 12px rgba(0,255,166,0.8);
     }
-
   </style>
 </head>
 
 <body>
 
-  <!-- =========================
-       NAVBAR (kept consistent)
-  ========================== -->
+  <!-- PARTICLES (THIS WAS MISSING) -->
+  <div id="particles-js"></div>
 
+  <!-- NAVBAR -->
   <header class="topbar">
     <img src="/images/logo.gif" class="logo" alt="logo">
 
@@ -142,15 +151,11 @@
     </nav>
   </header>
 
-  <!-- =========================
-       GAME MENU (your original layout)
-  ========================== -->
-
+  <!-- MENU -->
   <div id="menuPage">
 
     <div class="games-container">
 
-      <!-- slope -->
       <div class="game-box" onclick="loadGame('/slope.html')">
         <div class="game-button">
           <img src="images/slope.jpg">
@@ -158,7 +163,6 @@
         </div>
       </div>
 
-      <!-- mario -->
       <div class="game-box" onclick="loadGame('/superMARIO64.html')">
         <div class="game-button">
           <img src="images/supermario.jpg">
@@ -166,7 +170,6 @@
         </div>
       </div>
 
-      <!-- minecraft -->
       <div class="game-box" onclick="loadGame('/minecraft.html')">
         <div class="game-button">
           <img src="images/minecraft.jpg">
@@ -174,7 +177,6 @@
         </div>
       </div>
 
-      <!-- 1v1 -->
       <div class="game-box" onclick="loadGame('/1v1.html')">
         <div class="game-button">
           <img src="images/1v1.jpg">
@@ -182,7 +184,6 @@
         </div>
       </div>
 
-      <!-- baldi -->
       <div class="game-box" onclick="loadGame('/bdcp.html')">
         <div class="game-button">
           <img src="images/bdcp.jpg">
@@ -190,7 +191,6 @@
         </div>
       </div>
 
-      <!-- fnf -->
       <div class="game-box" onclick="loadGame('/fnf.html')">
         <div class="game-button">
           <img src="images/fnf.jpg">
@@ -198,7 +198,6 @@
         </div>
       </div>
 
-      <!-- -b -->
       <div class="game-box" onclick="loadGame('/b.html')">
         <div class="game-button">
           <img src="images/b.jpg">
@@ -210,10 +209,7 @@
 
   </div>
 
-  <!-- =========================
-       GAME VIEWER
-  ========================== -->
-
+  <!-- GAME VIEW -->
   <div id="gamePage">
 
     <div class="backbar">
@@ -224,10 +220,7 @@
 
   </div>
 
-  <!-- =========================
-       SCRIPT
-  ========================== -->
-
+  <!-- SCRIPT -->
   <script>
     function loadGame(url) {
       document.getElementById("menuPage").style.display = "none";
@@ -240,6 +233,21 @@
       document.getElementById("gamePage").style.display = "none";
       document.getElementById("gameFrame").src = "";
     }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      if (window.particlesJS) {
+        particlesJS("particles-js", {
+          particles: {
+            number: { value: 60 },
+            color: { value: "#00ffa6" },
+            shape: { type: "circle" },
+            opacity: { value: 0.5 },
+            size: { value: 3 },
+            move: { enable: true, speed: 2 }
+          }
+        });
+      }
+    });
   </script>
 
 </body>
