@@ -5,7 +5,6 @@
   <title>Credits</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Match site theme -->
   <meta name="theme-color" content="#00ffa6">
   <link rel="icon" href="/images/logo.gif">
   <link href="/styles.css" rel="stylesheet">
@@ -14,27 +13,44 @@
     body {
       margin: 0;
       min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
       background: black;
       color: white;
       font-family: Arial, sans-serif;
+      overflow: hidden;
+    }
+
+    /* CENTER AREA */
+    .credits-wrap {
+      position: absolute;
+      top: 70px;
+      left: 0;
+      width: 100%;
+      height: calc(100vh - 70px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     .credits-box {
       background: #2c2c2c;
       padding: 30px 40px;
-      border-radius: 10px;
+      border-radius: 12px;
       text-align: center;
       box-shadow: 0 0 25px rgba(0, 255, 166, 0.7);
-      max-width: 420px;
+      max-width: 450px;
       width: 90%;
+      transition: 0.2s ease;
+    }
+
+    .credits-box:hover {
+      box-shadow: 0 0 35px rgba(0, 255, 166, 1);
+      transform: translateY(-3px);
     }
 
     .credits-box h1 {
       margin-top: 0;
       margin-bottom: 10px;
+      color: #00ffa6;
     }
 
     .credits-box p {
@@ -49,39 +65,68 @@
       margin: 15px 0;
     }
 
-    .linkmaker {
-      display: inline-block;
-      margin-top: 15px;
-      padding: 6px 14px;
+    .small-text {
       font-size: 12px;
-      color: white;
-      background: black;
-      border-radius: 8px;
-      text-decoration: none;
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      opacity: 0.7;
     }
 
-    .linkmaker:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 0 6px rgba(0, 255, 166, 0.6);
+    .back-btn {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 8px 16px;
+      font-size: 13px;
+      color: black;
+      background: #00ffa6;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.15s ease;
+    }
+
+    .back-btn:hover {
+      box-shadow: 0 0 10px rgba(0,255,166,0.8);
+      transform: translateY(-2px);
     }
   </style>
 </head>
+
 <body>
 
-  <div class="credits-box">
-    <h1>Credits</h1>
-    <p>bash — site owner & dev</p>
-    <p>froggie1 / uv — proxy tech</p>
-    <p>Vincent Garreau  — background effects</p>
+  <!-- NAVBAR (same as index.html) -->
+  <header class="topbar">
 
-    <hr>
+    <img src="/images/logo.gif" class="logo" alt="logo">
 
-    <p style="font-size:12px; opacity:0.7;">
-      Made for fun • school sucks ong
-    </p>
+    <nav class="navlinks">
+      <a href="/">home</a>
+      <a href="credits.html">cred</a>
+      <a href="/games.html">play</a>
+      <a href="/apps.html">apps</a>
+    </nav>
 
-    <a href="/" class="linkmaker">← Back Home</a>
+  </header>
+
+  <!-- CONTENT -->
+  <div class="credits-wrap">
+
+    <div class="credits-box">
+
+      <h1>Credits</h1>
+
+      <p>bash — site owner & dev</p>
+      <p>froggie1 / UV — proxy system</p>
+      <p>Vincent Garreau — particles background</p>
+
+      <hr>
+
+      <p class="small-text">
+        Made for fun • school project / beta build
+      </p>
+
+      <a href="/" class="back-btn">← Back Home</a>
+
+    </div>
+
   </div>
 
 </body>
