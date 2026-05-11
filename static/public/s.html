@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <title>PLSD Classlink</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap" rel="stylesheet">
+        <script src="/js/settings.js" defer></script>
+    </head>
+
+    <body>
+
+    <canvas id="particles"></canvas>
+
+    <div class="main">
+        <h2>settings</h2>
+
+        <div class="settings-grid">
+
+            <div class="setting-card">
+                <div class="setting-title">anti-close</div>
+                <div class="setting-desc">prevents the site from being closed</div>
+
+                <div class="setting-actions">
+                    <button class="toggle-btn" id="antiCloseOn">enable</button>
+                    <button class="toggle-btn" id="antiCloseOff">disable</button>
+                </div>
+            </div>
+
+
+            <div class="setting-card">
+                <div class="setting-title">particles</div>
+                <div class="setting-desc">the little white dots that float on this page</div>
+
+                <div class="setting-actions">
+                    <button class="toggle-btn" id="particlesOn">enable</button>
+                    <button class="toggle-btn" id="particlesOff">disable</button>
+                </div>
+
+                <div class="particle-color-picker">
+                    <span style="color:white;">color:</span>
+                    <input type="color" id="particleColor" value="#ffffff">
+                </div>
+            </div>
+
+            <div class="setting-card">
+                <div class="setting-title">tab cloak</div>
+                <div class="setting-desc">makes it look like a normal site</div>
+
+                <select id="cloak" class="cloak-select">
+                    <option value="none">None</option>
+                    <option value="mykaty">MyKaty</option>
+                    <option value="google">Google</option>
+                    <option value="google drive">Google Drive</option>
+                    <option value="wayground">Wayground</option>
+                    <option value="aware">Aware</option>
+                    <option value="microsoft 365">Microsoft 365</option>
+                    <option value="kahoot">Kahoot</option>
+                    <option value="gimkit">Gimkit</option>
+                    <option value="blooket">Blooket</option>
+                    <option value="custom">Custom</option>
+                </select>
+
+                <input type="text" id="customcloaktitle" class="cloak-input" placeholder="title" style="display:none;">
+                <input type="text" id="customcloakfavicon" class="cloak-input" placeholder="favicon" style="display:none;">
+            </div>
+
+            <div class="setting-card">
+                <div class="setting-title">panic key</div>
+                <div class="setting-desc">instantly redirects to a safe site when pressed</div>
+
+                <select id="panicSite" class="panic-select">
+                    <option value="https://launchpad.classlink.com/katyisd">MyKaty</option>
+                    <option value="https://google.com">Google</option>
+                    <option value="https://drive.google.com">Google Drive</option>
+                    <option value="__custom__">Custom URL</option>
+                </select>
+
+                <input type="text" id="customPanicURL" class="panic-input" placeholder="enter custom url..." style="display:none;">
+
+                <button class="toggle-btn" id="bindPanicKey">bind key</button>
+                <div class="panic-label" id="panicLabel">panic key: none</div>
+            </div>
+
+            <div class="setting-card">
+                <div class="setting-title">anti-deledao</div>
+                <div class="setting-desc">overlays a noise image on the iframe to prevent deledao from detecting it as a game</div>
+
+                <div class="noise-slider" id="noiseSlider">
+                    <div class="noise-track"></div>
+                    <div class="noise-thumb" id="noiseThumb">
+                        <div class="noise-value" id="noiseValue">0%</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="setting-card">
+                <div class="setting-title">battery display</div>
+                <div class="setting-desc">the display above the navigation bar</div>
+
+                <div class="setting-actions">
+                    <button class="toggle-btn" id="batteryOn">enable</button>
+                    <button class="toggle-btn" id="batteryOff">disable</button>
+                </div>
+            </div>
+            
+            <div class="setting-card">
+                <div class="setting-title">notifications</div>
+                <div class="setting-desc">boxes with text that show the actions you've made. used for settings and other things</div>
+
+                <div class="setting-actions">
+                    <button class="toggle-btn" id="notificationsOn">enable</button>
+                    <button class="toggle-btn" id="notificationsOff">disable</button>
+                </div>
+            </div>
+
+            <div class="setting-card">
+                <div class="setting-title">about:blank cloaker</div>
+                <div class="setting-desc">creates an iframe of this site in a new tab. doesn't appear as a url in history</div>
+
+                <div class="setting-actions">
+                    <button class="toggle-btn" id="blankCloak">cloak</button>
+                </div>
+            </div>
+
+            <div class="setting-card">
+                <div class="setting-title">nav-bar customization</div>
+                <div class="setting-desc">toggle icons or text in the navigation bar</div>
+
+                <div class="setting-actions">
+                    <button class="toggle-btn active" id="toggleIcons">icons</button>
+                    <button class="toggle-btn active" id="toggleText">text</button>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <h3>that's it for now. more settings coming soon!</h3>
+    </div>
+
+    <h4 id="battery"></h4>
+
+    <div class="navigation-bar">
+        <ul class="nav-list">
+            <a href='/index.html'><li><img src="/icons/nav/h.png"> home</li></a>
+            <a href='/g.html'><li><img src="/icons/nav/g.png"> games</li></a>
+            <a href='/a.html'><li><img src="/icons/nav/a.png"> apps</li></a>
+            <a href='/s.html'><li><img src="/icons/nav/s.png"> settings</li></a>
+        </ul>
+    </div>
+
+    <div id="site-description">
+        <h1>Explore Knowledge with Our Online Learning Hub</h1>
+        <p>Your go-to platform for discovering new skills, mastering subjects, and achieving academic goals. Access interactive learning games, study tools, and resources designed for learners of all ages.</p>
+        
+        <section>
+            <h2>Subjects You Can Learn</h2>
+            <p>Mathematics, Science, English, History, Literature, Writing, Reading, Social Studies, Geography, Biology, Chemistry, Physics, Algebra, Geometry, Calculus, Statistics, Computer Science, Programming, Languages, Art, Music</p>
+        </section>
+        
+        <section>
+            <h2>Our Services</h2>
+            <p>Engaging online courses, exam preparation, tutoring, homework support, study guides, practice tests, educational videos, interactive lessons, curriculum planning, teacher resources, virtual classrooms, academic coaching, e-learning solutions</p>
+        </section>
+        
+        <section>
+            <h2>For Every Learner</h2>
+            <p>K-12 students, college and university learners, graduate students, adult learners, professionals seeking development, certification programs, degree courses, homeschool students</p>
+        </section>
+        
+        <section>
+            <h2>Exam & Test Prep</h2>
+            <p>Prep for SAT, ACT, GRE, GMAT, LSAT, MCAT, AP courses, standardized exams, college entrance tests, professional certifications, state assessments, midterms, and final exams</p>
+        </section>
+        
+        <section>
+            <h3>Learning Approaches</h3>
+            <p>Interactive lessons, video tutorials, quizzes, flashcards, notes, educational games, personalized learning paths, self-paced modules, collaborative projects, problem-solving exercises, STEM-focused activities, critical thinking challenges</p>
+        </section>
+    </div>
+
+
+
+    </body>
+    </html>
