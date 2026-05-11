@@ -92,6 +92,80 @@
     }
 
     /* NAVBAR (assumes styles.css handles layout) */
+
+    /* GAME EMBED */
+    #game-view {
+      display: none;
+      position: fixed;
+      top: 60px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 50;
+      background: black;
+      flex-direction: column;
+    }
+
+    #game-view.active {
+      display: flex;
+    }
+
+    #game-bar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 6px 16px;
+      background: #1a1a1a;
+      border-bottom: 1px solid #333;
+      flex-shrink: 0;
+    }
+
+    #btn-back {
+      background: #2c2c2c;
+      border: none;
+      color: white;
+      padding: 6px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 13px;
+      box-shadow: 0 0 10px rgba(0,255,166,0.4);
+      transition: 0.2s;
+    }
+
+    #btn-back:hover {
+      box-shadow: 0 0 18px rgba(0,255,166,0.9);
+    }
+
+    #btn-reload {
+      background: #2c2c2c;
+      border: none;
+      color: white;
+      padding: 6px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 13px;
+      box-shadow: 0 0 10px rgba(0,255,166,0.4);
+      transition: 0.2s;
+    }
+
+    #btn-reload:hover {
+      box-shadow: 0 0 18px rgba(0,255,166,0.9);
+    }
+
+    #game-title {
+      font-size: 13px;
+      font-weight: bold;
+      text-transform: uppercase;
+      color: #00ffa6;
+      text-shadow: 0 0 8px rgba(0,255,166,0.6);
+    }
+
+    #game-frame {
+      flex: 1;
+      border: none;
+      width: 100%;
+      background: black;
+    }
   </style>
 </head>
 
@@ -111,6 +185,14 @@
     <a href="/apps.html">apps</a>
   </nav>
 </header>
+
+<!-- GAME EMBED VIEW (sits below navbar, above everything else) -->
+<div id="game-view">
+  <div id="game-bar">
+    <span id="game-title"></span>
+  </div>
+  <iframe id="game-frame" allowfullscreen></iframe>
+</div>
 
 <!-- SEARCH -->
 <input id="gameSearch" type="text" placeholder="Search games...">
@@ -156,14 +238,13 @@ function render(filter = "") {
       box.className = "game-box";
 
       box.innerHTML = `
-        <a href="${g.link}">
-          <div class="game-button">
-            <img src="${g.img}" alt="${g.name}">
-            <div class="overlay-text">${g.name}</div>
-          </div>
-        </a>
+        <div class="game-button">
+          <img src="${g.img}" alt="${g.name}">
+          <div class="overlay-text">${g.name}</div>
+        </div>
       `;
 
+      box.addEventListener("click", () => openGame(g.link, g.name));
       container.appendChild(box);
     });
 }
@@ -173,6 +254,22 @@ render("");
 search.addEventListener("input", e => {
   render(e.target.value);
 });
+
+function openGame(url, name) {
+  document.getElementById("game-frame").src = url;
+  document.getElementById("game-title").textContent = name;
+  document.getElementById("game-view").classList.add("active");
+}
+
+function closeGame() {
+  document.getElementById("game-view").classList.remove("active");
+  document.getElementById("game-frame").src = "";
+}
+
+function reloadGame() {
+  const frame = document.getElementById("game-frame");
+  frame.src = frame.src;
+}
 
 /* PARTICLES INIT (safe fallback) */
 window.addEventListener("DOMContentLoaded", () => {
