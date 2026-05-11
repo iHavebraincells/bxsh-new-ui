@@ -10,6 +10,7 @@
   <body>
     <div id='ruffle'></div>
     <script src='https://unpkg.com/@ruffle-rs/ruffle'></script> <script>  var swfobject = {};
+      <script src="/anti-close.js" defer></script>
 swfobject.embedSWF = function (url, containerId) {
   var ruffle = window.RufflePlayer.newest();
   var container = document.getElementById(containerId);
