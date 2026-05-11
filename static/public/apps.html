@@ -107,6 +107,80 @@
       transform: translateY(-2px);
       box-shadow: 0 0 18px rgba(0, 255, 166, 1);
     }
+
+    /* APP EMBED */
+    #app-view {
+      display: none;
+      position: fixed;
+      top: 60px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 50;
+      background: black;
+      flex-direction: column;
+    }
+
+    #app-view.active {
+      display: flex;
+    }
+
+    #app-bar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 6px 16px;
+      background: #1a1a1a;
+      border-bottom: 1px solid #333;
+      flex-shrink: 0;
+    }
+
+    #btn-back {
+      background: #2c2c2c;
+      border: none;
+      color: white;
+      padding: 6px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 13px;
+      box-shadow: 0 0 10px rgba(0,255,166,0.4);
+      transition: 0.2s;
+    }
+
+    #btn-back:hover {
+      box-shadow: 0 0 18px rgba(0,255,166,0.9);
+    }
+
+    #btn-reload {
+      background: #2c2c2c;
+      border: none;
+      color: white;
+      padding: 6px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 13px;
+      box-shadow: 0 0 10px rgba(0,255,166,0.4);
+      transition: 0.2s;
+    }
+
+    #btn-reload:hover {
+      box-shadow: 0 0 18px rgba(0,255,166,0.9);
+    }
+
+    #app-title {
+      font-size: 13px;
+      font-weight: bold;
+      text-transform: uppercase;
+      color: #00ffa6;
+      text-shadow: 0 0 8px rgba(0,255,166,0.6);
+    }
+
+    #app-frame {
+      flex: 1;
+      border: none;
+      width: 100%;
+      background: black;
+    }
   </style>
 </head>
 
@@ -117,57 +191,63 @@
 
   <!-- NAVBAR -->
   <header class="topbar">
-
     <img src="/images/logo.gif" class="logo" alt="logo">
-
     <nav class="navlinks">
       <a href="/">home</a>
       <a href="credits.html">cred</a>
       <a href="/games.html">play</a>
       <a href="/apps.html">apps</a>
     </nav>
-
   </header>
 
-  <!-- CONTENT -->
-  <div class="apps-wrap">
+  <!-- APP EMBED VIEW (sits below navbar) -->
+  <div id="app-view">
+    <div id="app-bar">
+      <button id="btn-back" onclick="closeApp()">← Back to Apps</button>
+      <button id="btn-reload" onclick="reloadApp()">↺ Reload</button>
+      <span id="app-title"></span>
+    </div>
+    <iframe id="app-frame" allowfullscreen></iframe>
+  </div>
 
+  <!-- CONTENT -->
+  <div class="apps-wrap" id="apps-wrap">
     <div class="app-container">
 
       <!-- CODE EDITOR -->
-      <div class="app-box" onclick="openApp('/code.html')">
+      <div class="app-box" onclick="openApp('/code.html', 'Code Editor')">
         <div class="app-button">
           <img src="images/code.jpg" alt="app">
           <div class="overlay-text">Code Editor</div>
         </div>
       </div>
 
-            <!-- sandstone -->
-      <div class="app-box" onclick="openApp('/ss.html')">
+      <!-- SANDSTONE -->
+      <div class="app-box" onclick="openApp('/ss.html', 'SandStone')">
         <div class="app-button">
           <img src="images/ss.jpg" alt="app">
           <div class="overlay-text">SandStone</div>
         </div>
       </div>
-      
-            <!-- soundboard-->
-      <div class="app-box" onclick="openApp('/sb.html')">
+
+      <!-- SOUNDBOARD -->
+      <div class="app-box" onclick="openApp('/sb.html', 'SoundBoard')">
         <div class="app-button">
           <img src="images/sb.jpg" alt="app">
           <div class="overlay-text">SoundBoard</div>
         </div>
       </div>
-      
-            <!-- dont lecture-->
-      <div class="app-box" onclick="openApp('/dyl.html')">
+
+      <!-- DONT LECTURE -->
+      <div class="app-box" onclick="openApp('/dyl.html', 'Dont You Lecture Me')">
         <div class="app-button">
           <img src="images/dyl.jpg" alt="app">
           <div class="overlay-text">Dont You Lecture Me</div>
         </div>
       </div>
-      
-            <!-- emulator -->
-      <div class="app-box" onclick="openApp('/emjs.html')">
+
+      <!-- EMULATOR -->
+      <div class="app-box" onclick="openApp('/emjs.html', 'Emulator JS')">
         <div class="app-button">
           <img src="images/emjs.jpg" alt="app">
           <div class="overlay-text">Emulater JS</div>
@@ -175,10 +255,8 @@
       </div>
 
     </div>
-
   </div>
 
-  <!-- INIT PARTICLES (IMPORTANT) -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       if (window.particlesJS) {
@@ -195,8 +273,20 @@
       }
     });
 
-    function openApp(url) {
-      window.location.href = url;
+    function openApp(url, name) {
+      document.getElementById("app-frame").src = url;
+      document.getElementById("app-title").textContent = name;
+      document.getElementById("app-view").classList.add("active");
+    }
+
+    function closeApp() {
+      document.getElementById("app-view").classList.remove("active");
+      document.getElementById("app-frame").src = "";
+    }
+
+    function reloadApp() {
+      const frame = document.getElementById("app-frame");
+      frame.src = frame.src;
     }
   </script>
 
