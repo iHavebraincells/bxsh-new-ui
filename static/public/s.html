@@ -156,5 +156,50 @@
 
 </div>
 
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  // PARTICLES TOGGLE
+  document.querySelector("#particlesOn")?.addEventListener("click", () => {
+    localStorage.setItem("particles", "true");
+    location.reload();
+  });
+
+  document.querySelector("#particlesOff")?.addEventListener("click", () => {
+    localStorage.setItem("particles", "false");
+    location.reload();
+  });
+
+  // PARTICLE COLOR
+  document.querySelector("#particleColor")?.addEventListener("input", (e) => {
+    localStorage.setItem("particleColor", e.target.value);
+  });
+
+  // CLOAK
+  document.querySelector("#cloak")?.addEventListener("change", (e) => {
+    localStorage.setItem("cloak", e.target.value);
+    location.reload();
+  });
+
+  // PANIC URL
+  document.querySelector("#panicSite")?.addEventListener("change", (e) => {
+    localStorage.setItem("panicURL", e.target.value);
+  });
+
+  // NOTIFICATIONS
+  document.querySelector("#notificationsOn")?.addEventListener("click", () => {
+    localStorage.setItem("notifications", "true");
+  });
+
+  document.querySelector("#notificationsOff")?.addEventListener("click", () => {
+    localStorage.setItem("notifications", "false");
+  });
+
+});
+</script>
+
+
+  
 </body>
 </html>
