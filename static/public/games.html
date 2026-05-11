@@ -140,45 +140,6 @@ const games = [
 const container = document.getElementById("container");
 const search = document.getElementById("search");
 
-/* =========================
-   PATH FIXER (bulletproof)
-   ========================= */
-
-function resolvePath(file, type) {
-  if (type === "img") {
-    // try root images first
-    return `/images/${file}`;
-  }
-
-  // game file fallback logic
-  const tryRoot = `/${file}`;
-  const tryGamesFolder = `/games/${file}`;
-
-  // default = root (fastest, most common)
-  return tryRoot;
-}
-
-/* =========================
-   IMAGE ERROR HANDLER
-   ========================= */
-
-function createImage(src) {
-  const img = document.createElement("img");
-  img.src = src;
-
-  img.onerror = () => {
-    img.replaceWith(createFallback());
-  };
-
-  return img;
-}
-
-function createFallback() {
-  const div = document.createElement("div");
-  div.className = "fallback";
-  div.textContent = "No Image";
-  return div;
-}
 
 /* =========================
    RENDER SYSTEM
